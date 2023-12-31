@@ -1,0 +1,11 @@
+__pycache__
+Lib
+imgfile3dsblob.cat
+index.html
+indexc.html
+web.py
+mast.py
+tmp/*
+templates/layout/base.html
+HNI_*
+WiiU_*

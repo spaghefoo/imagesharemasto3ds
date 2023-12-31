@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+        {% if 'Nintendo' in request.headers.get('User-Agent') %}
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" type="text/css" />
+        {% else %}
+            <meta http-equiv="refresh" content="0;{{ url_for('about')}}">
+        {% endif %}
+        {% if "WiiU" in request.headers.get('User-Agent') %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='index_wiiu.css') }}"
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+  
+    <div id="header">
+        <img src="{{ url_for('static', filename='Logo placeholder.png') }}" />
+        <h1>Partage d'image</h1>
+    </div>
+    {% block content %}
+   
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+#header
+{
+    background-color: #FFA500;
+    text-align: center;
+    height:74px;
+    width:372px;
+    color:white;
+    margin:auto;
+    line-height:74px;
+}
+body
+{
+    background-color: #f8f8f8;
+}
+button
+{
+    border-radius: 550px;
+    height: 110px;
+    width: 584px;
+    font-size: 28px;
+    margin-left:15%;
+    margin-top:50px;
+}
+
+#inst
+{
+    height:54px;
+    width:285px;
+}
+
+#usr
+{
+    height:70px;
+    width:420px;
+}
+
+#pwd
+{
+    height:70px;
+    width:420px;
+}
+
+input[type=submit]
+{
+    border-radius: 30px;
+}
+
+#login
+{
+    font-size: 24px;
+    height:58px;
+    width:169px;
+    background-color: #4545FF;
+    border: 0px solid;
+    color:white;
+    
+
+}
+
+form
+{
+    text-align: center;
+    margin: auto;
+    margin-top:9px;
+}
+textarea
+{
+    border: 1px solid black;
+    width:366px;
+    height:67px;
+}
+input
+{
+    margin-top:5px;
+}
+#post
+{
+    font-size: 17px;
+    height:37px;
+    width:157px;
+    background-color: #ADD8E6;
+    border: 0;
+}
+
+#conn
+{
+    margin:auto;
+    width:372px;
+    height: 20px;
+    line-height: 20px;
+    text-align:center;
+}
+
+label
+{
+    font-size: 20px;
+}

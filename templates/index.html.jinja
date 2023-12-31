@@ -1,0 +1,15 @@
+{% extends "layout/index copy.html" %}
+{% block head %}{{ super() }}{% endblock %}
+{% block title %}3DS image share to mastodon and twitter/bluesky{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <p id="flash_success">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+<a href=''><button class="blue">Publier sur Twitter</button></a>
+<a href="{{ url_for("login_masto") }}"><button class="masto">Publier sur Mastodon</button></a>
+
+{% endblock %}

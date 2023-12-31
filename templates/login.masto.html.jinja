@@ -1,0 +1,25 @@
+{% extends "layout/index copy.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h4 style="background-color:#f1eded;text-align:center">Connexion à une instance Fediverse.</h4>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div id="flash_failure">
+            <small>{{ message }}</small>
+        </div>
+        {% endfor %}
+    {% endif %}
+<form action="" method="POST">
+    <label for='instance'>Instance:</label><br />
+    <input id='inst' name='instance' type="text" /><br />
+    <label for='usr'>Email:</label><br />
+    <input id='usr' name='usr' type="email" /><br />
+    <label for='pwd'>Mot de passe</label><br />
+    <input id='pwd' name='pwd' type='password' /><br />
+    <input id='login' type='submit' />
+</form>
+{% endwith %}
+{% endblock %}

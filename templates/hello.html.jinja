@@ -1,0 +1,10 @@
+    {% extends "layout/base.html" %}
+    {% block title %}Hello from FLASK!!!!!!!{% endblock %}
+    {% block content %}
+    {% if name %}
+        <h1>Hello {{ name }} ! How are you today</h1>
+        <small>I recommend watching <a href='https://twitch.tv/hypnoshark'>hypnoshark</a></small>
+    {% else %}
+        <h1>Hello world! I'm feel it comin'</h1>
+    {% endif %}
+    {% endblock %}

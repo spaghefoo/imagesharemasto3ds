@@ -1,0 +1,7 @@
+   {% extends "layout/index copy.html" %}
+   {% block title %}NOTFOUND{% endblock %}    
+    {% block content %}
+        <h1>ERROR 404!</h1>
+        <p>This page wasn't found on the server, sorry.</p>
+        <a href="{{ url_for('index') }}">Go home</a>
+    {% endblock %}

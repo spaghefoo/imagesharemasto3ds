@@ -1,0 +1,15 @@
+{% extends "layout/base.html" %}
+   {% block title %} Image upload {% endblock %}
+   {% block content %}  
+   <form action="" method="POST" enctype="multipart/form-data">
+        <input type='file' name="img"/>
+        <input type="submit" />
+    </form>
+    {% with  messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message|safe }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% endblock %}
