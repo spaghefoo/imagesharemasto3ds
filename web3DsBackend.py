@@ -5,11 +5,13 @@ import filetype
 from Python2Masto import toMastodon
 from mastodon import Mastodon, MastodonError, MastodonAPIError, MastodonRatelimitError, MastodonNetworkError, MastodonIllegalArgumentError
 from parse3DSTitles import Parse3DSTitles, ParseWiiUTitles, NintendoParseUtils
+from Translations import Translations
 from PIL import Image, ExifTags
 import random, string, os
 
 app = Flask(__name__)
 app.secret_key = b'](y(y02d65f'
+translation = Translations()
 
 
 def toot(loginId, text, mastodoninstance, image=None):
@@ -39,14 +41,16 @@ def InitMasto(instance):
 
 @app.errorhandler(404)
 def notfound(error):
-    return render_template('notfound.html.jinja'), 404    
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    return render_template('notfound.html.jinja', arrayTranslate=trans), 404    
 @app.route('/')
 def index():
-    return render_template('index.html.jinja')
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    return render_template('index.html.jinja', arrayTranslate=trans)
 
 @app.route('/login/masto', methods=['GET', 'POST'])
 def login_masto():
-
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
     # SI REQUETE POST(tentative de login.)
     if request.method == 'POST':
         try:
@@ -78,18 +82,18 @@ def login_masto():
             return redirect(url_for('post'))
         
 
-    return render_template('login.masto.html.jinja')
+    return render_template('login.masto.html.jinja', arrayTranslate=trans)
 
     
 
 @app.route('/post', methods=['GET', 'POST'])
 def post():
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
     print(session)
     if 'token' not in session:
         app.logger.info("REDIRECTION VERS LA PAGE D'ACCUEIL CAR PAS CONNECTÉ")
         return redirect(url_for('index'))
-    
-
+    error = None
     if request.method == 'POST':
         img = None
         imgpath = None
@@ -114,7 +118,7 @@ def post():
                     app.logger.warning(te)
                     titleName = "Image"
                 else:
-                    titleName = ''.join(titleName).lower()
+                    titleName = ''.join(titleName).lower().replace("\u2122", "")
                 finally:
                     tootString = f'{request.form['message']} #3DS #{titleName}'
             else:
@@ -132,30 +136,34 @@ def post():
                 finally:
                     tootString = f'{request.form['message']} #WiiU #{titleName}'
 
-        if 'img' in request.files or 'message' in request.form:
+        if request.files['img'].filename != '' or 'message' != None in request.form:
+            app.logger.info(request.files, request.form)
             e = toot(session['token'], tootString, session['instance'] , imgpath)
             os.remove(imgpath)
+            if e is not None:
+                error ="An error occured during the upload process. please try again later"
+            else:
+                flash("Message was uploaded successfully!")
         else:
-            flash("Please post a message")
-
-        if e is not None:
-            flash("An error occured during the upload process. please try again later")
-        else:
-            flash("Message was uploaded successfully!")
+            error = "Please post a message"
 
    
-    return render_template('logon.html.jinja', usr=session['usr'] ,inst=session['instance'])
+
+   
+    return render_template('logon.html.jinja', usr=session['usr'] ,inst=session['instance'], error=error, arrayTranslate=trans)
 
 
 @app.get('/logoff')
 def popoff():
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
     session.clear()
-    flash("You are logged off successfully")
+    flash(trans['DecoSucessful'])
     return redirect(url_for('index'))
 
 @app.get('/about/')
 def about():
-    return render_template('about.html.jinja')
+    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    return render_template('about.html.jinja', arrayTranslate=trans)
 
 """
 Tests.

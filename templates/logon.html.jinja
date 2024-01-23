@@ -5,7 +5,7 @@
     }}{% endblock %}
 {% block title %}3DS image share to mastodon and twitter/bluesky{% endblock %}
 {% block content %}
-   <div id="conn">Connecté en tant que {{ usr }}@{{ inst }} <a id="deconn" href="{{ url_for('popoff') }}">Déconnexion</a></div>
+   <div id="conn">{{ arrayTranslate['ConnectedMastoMessage']}} {{ usr }}@{{ inst }} <a id="deconn" href="{{ url_for('popoff') }}">Déconnexion</a></div>
     <form action="" method="POST" enctype='multipart/form-data'>
         <label for="message">Votre Post</label><br />
         <textarea name="message"></textarea><br />
@@ -13,9 +13,12 @@
         <input type="submit" id="post"/><br />
     </form>
     <br />
+    {% if error %}
+        <div id="flash_failure">{{ error }}</div>
+    {% endif %}
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <div id="flash_info">
+        <div id="flash_success">
             {% for message in messages %}
                 <b>{{ message }}</b>
             {% endfor %}

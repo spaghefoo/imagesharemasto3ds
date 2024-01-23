@@ -1,0 +1,49 @@
+{"fr": {
+    "header": "Partage d'image Nintendo",
+    "PublishTwitter": "Publier sur Twitter",
+    "PublishMasto": "Publier Sur Mastodon",
+    "LoginConnexionMasto": "Connexion à une instance Mastodon",
+    "LoginMastoInstance": "Instance",
+    "LoginMastoEmail": "Email",
+    "LoginMastoPassword": "Mot de passe",
+    "ConnectedMastoMessage": "Connecté en tant que",
+    "BadMastoCredentials":"Mauvais identifiants, veuillez réessayer",
+    "BadMastoRequest": "Impossible de satisfaire votre demande, veuillez réessayer",
+    "BadMastoInstance": "Impossible de contacter l'instance, verifier l'instance et réessayer.",
+    "RateLimitMastoReached": "RateLimit Atteinte, réessayez plus tard",
+    "GeneralMastoError": "Erreur générale, Veuillez réessayer plus tard",
+    "UploadImageEmpty": "Veuillez taper un message",
+    "UploadImageFail": "Une erreur est survenue lors de la publication du poste, veuillez réessayer.",
+    "UploadImageSuccess": "Le message à été posté!",
+    "DecoSuccessful": "Vous avez été déconnecté.",
+    "NotFound": "Cette page n'a pas été trouvée, désolé.",
+    "GoHome": "Revenir à l'accueil"
+}, 
+"en": {
+    "header": "Nintendo Image Sharing",
+    "PublishTwitter": "Publish on Twitter",
+    "PublishMasto": "Publish on Mastodon",
+    "LoginConnexionMasto": "Connecting to a Fediverse instance.",
+    "LoginMastoInstance": "Instance",
+    "LoginMastoEmail": "Email",
+    "LoginMastoPassword": "Password",
+    "ConnectedMastoMessage": "Logged as",
+    "BadMastoCredentials":"Bad credentials, please try again",
+    "BadMastoRequest": "Cannot fulfill your request, please try again",
+    "BadMastoInstance": "Could not contact your instance, Check the spelling and try again.",
+    "RateLimitMastoReached": "RateLimit Reached, try again in a moment",
+    "GeneralMastoError": "General error, try again later",
+    "UploadImageEmpty": "Please type a message",
+    "UploadImageFail": "An error occured during the publishing, please try again.",
+    "UploadImageSuccess": "The message was publish",
+    "DecoSuccessful": "You are logged off",
+    "NotFound": "Cette page n'a pas été trouvée, désolé.",
+    "GoHome": "Revenir à l'accueil"
+},
+"de":{
+
+}, 
+"it":{
+
+}}
+

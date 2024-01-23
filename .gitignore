@@ -9,3 +9,4 @@ tmp/*
 templates/layout/base.html
 HNI_*
 WiiU_*
+mongo.py

@@ -9,7 +9,7 @@
     {% endfor %}
     {% endif %}
 {% endwith %}
-<a href=''><button class="blue">Publier sur Twitter</button></a>
-<a href="{{ url_for("login_masto") }}"><button class="masto">Publier sur Mastodon</button></a>
+<a href=''><button class="blue">{{ arrayTranslate['PublishTwitter'] }} </button></a>
+<a href="{{ url_for("login_masto") }}"><button class="masto">{{ arrayTranslate['PublishMasto'] }}</button></a>
 
 {% endblock %}
