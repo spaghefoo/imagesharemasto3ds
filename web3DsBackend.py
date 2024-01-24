@@ -39,18 +39,33 @@ def InitMasto(instance):
     return toMast
     
 
+def fetchTranslations(language):
+    if 'language' not in session:
+        session['language'] = language
+    return translation.returnTranslation(language)
+
+
 @app.errorhandler(404)
 def notfound(error):
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])
     return render_template('notfound.html.jinja', arrayTranslate=trans), 404    
 @app.route('/')
 def index():
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])
     return render_template('index.html.jinja', arrayTranslate=trans)
 
 @app.route('/login/masto', methods=['GET', 'POST'])
 def login_masto():
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])    
     # SI REQUETE POST(tentative de login.)
     if request.method == 'POST':
         try:
@@ -88,7 +103,10 @@ def login_masto():
 
 @app.route('/post', methods=['GET', 'POST'])
 def post():
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])    
     print(session)
     if 'token' not in session:
         app.logger.info("REDIRECTION VERS LA PAGE D'ACCUEIL CAR PAS CONNECTÉ")
@@ -155,14 +173,20 @@ def post():
 
 @app.get('/logoff')
 def popoff():
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])    
     session.clear()
     flash(trans['DecoSucessful'])
     return redirect(url_for('index'))
 
 @app.get('/about/')
 def about():
-    trans = translation.returnTranslation(request.headers.get('Accept-Language').split(',')[0])
+    if 'language' not in session:
+        trans = fetchTranslations(request.headers.get('Accept-Language').split(',')[0])
+    else:
+        trans = translation.returnTranslation(session['language'])
     return render_template('about.html.jinja', arrayTranslate=trans)
 
 """

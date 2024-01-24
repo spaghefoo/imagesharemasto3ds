@@ -37,8 +37,8 @@
     "UploadImageFail": "An error occured during the publishing, please try again.",
     "UploadImageSuccess": "The message was publish",
     "DecoSuccessful": "You are logged off",
-    "NotFound": "Cette page n'a pas été trouvée, désolé.",
-    "GoHome": "Revenir à l'accueil"
+    "NotFound": "This Page wasn't found on this server.",
+    "GoHome": "Go to home"
 },
 "de":{
 

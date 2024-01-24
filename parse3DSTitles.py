@@ -72,7 +72,7 @@ class Parse3DSTitles():
 
 
             datas = []
-            regions = ['GB', 'JP', 'KR', 'TW', 'US'] # Les differentes regions...(GB = EUR)
+            regions = ('GB', 'JP', 'KR', 'TW', 'US') # Les differentes regions...(GB = EUR)
             for region in regions: # pour chaque region.
                 db = open("title/3ds/list_"+region+".json") 
                 datas.append(json.load(db))
